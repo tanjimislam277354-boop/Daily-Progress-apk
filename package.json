@@ -1,8 +1,8 @@
 {
-  "name": "daily-progress-apk",
+  "name": "study-app-apk",
   "version": "1.0.0",
   "private": true,
-  "description": "Daily Progress offline Android app",
+  "description": "Study App offline Android app",
   "scripts": {
     "build": "mkdir -p www && cp index.html www/index.html"
   },
