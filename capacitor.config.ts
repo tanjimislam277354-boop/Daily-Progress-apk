@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.tasnim.dailyprogress',
-  appName: 'Study App',
+  appId: 'com.tasnim.syllabustracker',
+  appName: 'Syllabus Tracker',
   webDir: 'www'
 };
 
