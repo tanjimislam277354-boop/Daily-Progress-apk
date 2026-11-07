@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.tasnim.dailyprogress',
-  appName: 'Daily Progress',
+  appName: 'Study App',
   webDir: 'www'
 };
 
