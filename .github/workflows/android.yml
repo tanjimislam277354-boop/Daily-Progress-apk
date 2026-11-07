@@ -41,13 +41,13 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
           p = Path("android/app/src/main/AndroidManifest.xml")
           s = p.read_text()
           if "android.permission.VIBRATE" not in s:
-              s, n = re.subn(r"(<manifest\\b[^>]*>)", r'\\1\\n    <uses-permission android:name="android.permission.VIBRATE" />', s, count=1)
-              if n != 1:
-                  raise SystemExit("Could not add VIBRATE permission to AndroidManifest.xml")
+              i = s.find(">")
+              if i < 0 or not s.lstrip().startswith("<manifest"):
+                  raise SystemExit("Could not find Android manifest opening tag")
+              s = s[:i+1] + '\n    <uses-permission android:name="android.permission.VIBRATE" />' + s[i+1:]
               p.write_text(s)
           PY
       - name: Setup Java
