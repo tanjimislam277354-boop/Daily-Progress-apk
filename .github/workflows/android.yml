@@ -31,7 +31,7 @@ jobs:
           mkdir -p android/app/src/main/res/drawable-nodpi
           rsvg-convert -w 512 -h 512 assets/study-app-icon.svg -o /tmp/study-app-icon.png
           cp /tmp/study-app-icon.png android/app/src/main/res/drawable-nodpi/ic_launcher_foreground.png
-          find android/app/src/main/res -type d -name 'mipmap-*' -print0 | while IFS= read -r -d '' dir; do
+          find android/app/src/main/res -type d -name 'mipmap-*' ! -name 'mipmap-anydpi*' -print0 | while IFS= read -r -d '' dir; do
             cp /tmp/study-app-icon.png "$dir/ic_launcher.png"
             cp /tmp/study-app-icon.png "$dir/ic_launcher_round.png"
           done
