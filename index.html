@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#070a18">
 <meta name="color-scheme" content="dark">
 <meta name="mobile-web-app-capable" content="yes">
@@ -288,7 +288,68 @@ section.sc .tt b,section.ph .pn b,#list>.cd .tt b,.ar[data-act] .an b{color:#f0f
 .lst,.cd.open .bd{animation:none!important}
 button:active,.ch:active,.row:active,.tr:active{opacity:.86}
 .q{background:#0e1330!important;border-radius:16px!important}
-.bar{padding:6px 12px calc(6px + var(--sab))!important;background:#070a18!important;border-top:1px solid #161d45!important}.svb{height:38px!important;font-size:15px!important;border-radius:12px!important}body{padding-bottom:calc(60px + var(--sab))!important}</style></head>
+.bar{padding:6px 12px calc(6px + var(--sab))!important;background:#070a18!important;border-top:1px solid #161d45!important}.svb{height:38px!important;font-size:15px!important;border-radius:12px!important}body{padding-bottom:calc(60px + var(--sab))!important}</style>
+<style id="modern">
+/* ===== Modern phone/tablet patch: Redmi 14C, Honor Pad X7 ===== */
+:root{--sal:0px;--sar:0px}
+@supports (padding:env(safe-area-inset-left)){
+  :root{--sal:env(safe-area-inset-left);--sar:env(safe-area-inset-right)}
+}
+body{
+  min-height:100vh;min-height:100dvh;
+  padding-left:var(--sal);padding-right:var(--sar);
+  overscroll-behavior-y:contain;
+}
+
+/* wide screen (tablet/landscape): content stays centred */
+.hd{
+  padding-left:max(14px,calc((100% - 760px)/2 + 14px))!important;
+  padding-right:max(14px,calc((100% - 760px)/2 + 14px))!important;
+}
+.hero,#list{max-width:760px;margin-left:auto;margin-right:auto}
+.hero{width:calc(100% - 16px)}
+.bar{display:flex;justify-content:center}
+.bar .svb{max-width:760px}
+
+/* thumb-friendly touch targets */
+.ch{min-height:56px}
+.r{min-height:44px}
+.c{height:44px;padding:13px 0;-webkit-user-select:none;user-select:none}
+.n{height:28px;line-height:28px!important}
+.nm{line-height:1.5}
+
+/* edit popup */
+.edc{max-height:88vh;max-height:88dvh;padding-bottom:calc(14px + var(--sab))}
+.edi,#edn{font-size:16px;height:42px}
+.edr button{height:42px;width:40px}
+
+/* tablet (Honor Pad X7) */
+@media (min-width:600px){
+  body{font-size:17px}
+  .hd h1{font-size:24px!important}
+  .hero{padding:18px}
+  .rgw.big{width:84px;height:84px}
+  .h2{font-size:24px}
+  .tt b{font-size:18px}
+  .tt small{font-size:14px}
+  .ic{width:40px;height:40px;font-size:22px}
+  .rgw{width:42px;height:42px}
+  .cd .rgw .rv{font-size:12.5px!important}
+  .hero .rgw.big .rv{font-size:20px!important}
+  .nm{font-size:17px!important}
+  .n{width:42px!important;font-size:13px!important}
+  .sh{height:34px}
+  .st{font-size:14px}
+  .cl{width:calc(var(--cw)*1.45);font-size:12px!important}
+  .cl.w2{font-size:11px!important}
+  .c{width:calc(var(--cw)*1.45);height:48px;padding:15px 0}
+  .c u{width:20px;height:20px}
+  .c u:after{left:5.5px;top:1px;height:10px}
+  .edm{align-items:center}
+  .edc{border-radius:18px;max-width:520px}
+}
+</style>
+</head>
 <body>
 
 <div class="hd">
