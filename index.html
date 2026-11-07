@@ -582,7 +582,7 @@ function aCfg(){var o=rawjs(AK);if(!o.hourly)o.hourly={on:true,from:'06:00',to:'
 function aTm(s){var a=String(s||'0:0').split(':');return (+a[0]||0)*60+(+a[1]||0)}
 function aCtx(){try{if(!aCx){var A=window.AudioContext||window.webkitAudioContext;if(A)aCx=new A()}if(aCx&&aCx.state==='suspended')aCx.resume()}catch(e){}return aCx}
 function aBeep(f,t0,d,v){var c=aCtx();if(!c)return;try{var o=c.createOscillator(),g=c.createGain(),s=c.currentTime+t0;o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0.0001,s);g.gain.exponentialRampToValueAtTime(v,s+0.02);g.gain.exponentialRampToValueAtTime(0.0001,s+d);o.connect(g);g.connect(c.destination);o.start(s);o.stop(s+d+0.05)}catch(e){}}
-function aVib(p){try{if(navigator.vibrate){navigator.vibrate(p);return 1}}catch(e){}return 0}
+function aVib(p){try{if(typeof navigator.vibrate==='function')return navigator.vibrate(p)?1:0}catch(e){}return 0}
 function aNote(t,b){try{if(document.hidden&&window.Notification&&Notification.permission==='granted')new Notification(t,{body:b})}catch(e){}}
 function aBuzz3(){var ok=aVib([400,250,400,250,400]);if(!ok){aBeep(880,0,.25,.2);aBeep(880,.5,.25,.2);aBeep(880,1,.25,.2)}banner('⏰ '+hm(Date.now())+' · 3 buzz',2500);aNote('Hourly buzz',hm(Date.now()))}
 function aPulse(){aVib([700,300,700,300,700]);aBeep(988,0,.3,.3);aBeep(988,.5,.3,.3);aBeep(1318,1,.5,.3)}
