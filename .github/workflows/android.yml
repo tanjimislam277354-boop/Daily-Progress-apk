@@ -37,6 +37,19 @@ jobs:
           done
       - name: Sync Capacitor
         run: npx cap sync android
+      - name: Enable Android vibration permission
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path("android/app/src/main/AndroidManifest.xml")
+          s = p.read_text()
+          if "android.permission.VIBRATE" not in s:
+              s, n = re.subn(r"(<manifest\\b[^>]*>)", r'\\1\\n    <uses-permission android:name="android.permission.VIBRATE" />', s, count=1)
+              if n != 1:
+                  raise SystemExit("Could not add VIBRATE permission to AndroidManifest.xml")
+              p.write_text(s)
+          PY
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
